@@ -22,7 +22,7 @@
             var paquete = "com.jgsgames.puntoraya"; 
             
             // Este es el enlace "Misil": si la app está instalada, se abre sí o sí
-            var intentUrl = "intent://login" + params + "#Intent;scheme=puntoraya;package=" + paquete + ";end";
+            var intentUrl = "intent://login/" + params + "#Intent;scheme=puntoraya;package=" + paquete + ";S.browser_fallback_url=https://jgiraldo1969.github.io/index.html;end";
             
             window.location.href = intentUrl;
         });
