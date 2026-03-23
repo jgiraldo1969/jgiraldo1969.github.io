@@ -11,24 +11,18 @@
 </head>
 <body>
     <h2>¡AUTENTICACIÓN EXITOSA!</h2>
-    <p>Toca el botón para regresar al juego</p>
+    <p>Toca el botón dorado para regresar</p>
     
     <a id="btn-puro" class="btn" href="#">ENTRAR AL JUEGO</a>
 
     <script>
-        document.getElementById("btn-puro").addEventListener("click", function(event) {
-            // Evitamos que el botón haga cosas raras
-            event.preventDefault(); 
-            
+        // Apenas carga la página, inyectamos la dirección directamente en el botón
+        window.onload = function() {
             var params = window.location.search;
             var urlPura = "puntoraya://login" + params;
             
-            // Te mostramos esta alerta para confirmar que el botón funciona
-            alert("Chrome va a intentar abrir este enlace:\n" + urlPura);
-            
-            // Intentamos hacer el salto
-            window.location.href = urlPura;
-        });
+            document.getElementById("btn-puro").href = urlPura;
+        };
     </script>
 </body>
 </html>
