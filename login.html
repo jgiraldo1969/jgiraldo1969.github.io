@@ -3,32 +3,32 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Regresando al juego...</title>
+    <title>PUNTO.PUNTO.-RAYA</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 20%; background-color: #2b2b2b; color: white; }
-        .btn { display: inline-block; padding: 15px 30px; font-size: 20px; font-weight: bold; color: white; background-color: #d4af37; text-decoration: none; border-radius: 10px; margin-top: 30px; border: 2px solid #fff; cursor: pointer; }
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 20%; background-color: #1a1a1a; color: white; }
+        .btn { display: inline-block; padding: 20px 40px; font-size: 22px; font-weight: bold; color: white; background-color: #d4af37; text-decoration: none; border-radius: 50px; border: 3px solid white; cursor: pointer; }
     </style>
 </head>
 <body>
-    <h2>¡Inicio de sesión exitoso!</h2>
-    <p>Por favor, presiona el botón para volver al juego</p>
+    <h2>¡AUTENTICACIÓN EXITOSA!</h2>
+    <p>Presiona el botón para volver al combate</p>
     
-    <a id="btn-regresar" class="btn">VOLVER A JUGAR</a>
+    <a id="btn-regresar" class="btn">ENTRAR AL JUEGO</a>
 
     <script>
-        // Obtenemos los datos que nos manda Google
-        var datos = window.location.search;
-        
-        // Armamos el enlace simple directo a tu juego
-        var enlaceJuego = "puntoraya://login" + datos;
+        document.getElementById("btn-regresar").addEventListener("click", function() {
+            var params = window.location.search;
+            
+            var paquete = "com.jgsgames.puntoraya"; 
+            
+            // Este es el enlace "Misil": si la app está instalada, se abre sí o sí
+            var intentUrl = "intent://login" + params + "#Intent;scheme=puntoraya;package=" + paquete + ";end";
+            
+            window.location.href = intentUrl;
+        });
 
-        // Le ponemos el enlace al botón dorado
-        document.getElementById("btn-regresar").href = enlaceJuego;
-
-        // Intentamos que salte solito en 1 segundo (ahora que la puerta está abierta)
-        setTimeout(function() {
-            window.location.href = enlaceJuego;
-        }, 1000);
+        // Intento automático
+        setTimeout(function() { document.getElementById("btn-regresar").click(); }, 1500);
     </script>
 </body>
 </html>
