@@ -2,13 +2,30 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Regresando al juego...</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 20%; background-color: #2b2b2b; color: white; }
+        .btn { display: inline-block; padding: 15px 30px; font-size: 20px; font-weight: bold; color: white; background-color: #d4af37; text-decoration: none; border-radius: 10px; margin-top: 30px; border: 2px solid #fff; }
+    </style>
 </head>
 <body>
-    <h2>Inicio de sesión exitoso. Regresando al juego...</h2>
+    <h2>¡Inicio de sesión exitoso!</h2>
+    <p>Por favor, presiona el botón para volver a PUNTO.PUNTO.-RAYA</p>
+    
+    <a id="btn-regresar" class="btn" href="#">VOLVER AL JUEGO</a>
+
     <script>
-        // Toma el código de autorización de Google y lo dispara a tu juego
-        window.location.href = "puntoraya://login" + window.location.search;
+        // 1. Armamos el enlace con el código secreto de Google
+        var enlaceJuego = "puntoraya://login" + window.location.search;
+        
+        // 2. Se lo inyectamos al botón
+        document.getElementById("btn-regresar").href = enlaceJuego;
+
+        // 3. Intentamos hacer el salto automático (por si Chrome nos deja)
+        setTimeout(function() {
+            window.location.href = enlaceJuego;
+        }, 800);
     </script>
 </body>
 </html>
